@@ -24,14 +24,14 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// router.post('/', async (req, res) => {
-//     try {
-//       const { firstName, lastName, email, favoriteColor, birthday } = req.body;
+router.post('/', async (req, res) => {
+    try {
+      const { firstName, lastName, email, favoriteColor, birthday } = req.body;
   
-//       // Validate required fields
-//       if (!firstName || !lastName || !email) {
-//         return res.status(400).json({ message: 'firstName, lastName, and email are required' });
-//       }
+      // Validate required fields
+      if (!firstName || !lastName || !email) {
+        return res.status(400).json({ message: 'firstName, lastName, and email are required' });
+      }
   
       // Create a new contact document
       const newContact = new Contact({
@@ -50,15 +50,15 @@ router.get('/:id', async (req, res) => {
     }
   });
 
-  // router.delete('/:id', async (req, res) => {
-  //   try {
-  //     const contact = await Contact.findByIdAndDelete(req.params.id);
-  //     if (!contact) return res.status(404).json({ message: 'Contact not found' });
-  //     res.json({ message: 'Contact deleted successfully' });
-  //   } catch (err) {
-  //     res.status(500).json({ message: err.message });
-  //   }
-  // });
+  router.delete('/:id', async (req, res) => {
+    try {
+      const contact = await Contact.findByIdAndDelete(req.params.id);
+      if (!contact) return res.status(404).json({ message: 'Contact not found' });
+      res.json({ message: 'Contact deleted successfully' });
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  });
   
   
 
