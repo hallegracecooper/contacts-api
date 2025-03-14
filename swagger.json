@@ -1,0 +1,157 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Contacts API",
+      "version": "1.0.0",
+      "description": "API for managing contacts."
+    },
+    "servers": [
+      {
+        "url": "https://contacts-api-h2tz.onrender.com",
+        "description": "Deployed server"
+      }
+    ],
+    "paths": {
+      "/contacts": {
+        "get": {
+          "summary": "Get all contacts",
+          "responses": {
+            "200": {
+              "description": "List of contacts"
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new contact",
+          "requestBody": {
+            "description": "Contact object that needs to be added",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contact"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Contact created successfully"
+            },
+            "400": {
+              "description": "Invalid input"
+            }
+          }
+        }
+      },
+      "/contacts/{id}": {
+        "get": {
+          "summary": "Get a contact by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              },
+              "description": "Contact ID"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Contact found"
+            },
+            "404": {
+              "description": "Contact not found"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a contact",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              },
+              "description": "Contact ID to update"
+            }
+          ],
+          "requestBody": {
+            "description": "Updated contact object",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contact"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Contact updated successfully"
+            },
+            "400": {
+              "description": "Invalid input"
+            },
+            "404": {
+              "description": "Contact not found"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a contact",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              },
+              "description": "Contact ID to delete"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Contact deleted successfully"
+            },
+            "404": {
+              "description": "Contact not found"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Contact": {
+          "type": "object",
+          "properties": {
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "favoriteColor": {
+              "type": "string"
+            },
+            "birthday": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          "required": ["firstName", "lastName", "email", "favoriteColor", "birthday"]
+        }
+      }
+    }
+  }
+  
