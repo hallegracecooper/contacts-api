@@ -1,0 +1,43 @@
+### Get all contacts
+GET https://contacts-api-h2tz.onrender.com/contacts
+Content-Type: application/json
+
+###
+
+### Get a contact by ID
+GET https://contacts-api-h2tz.onrender.com/contacts/67d4b748d7af6c4c0088bebf
+Content-Type: application/json
+
+###
+
+### Create a new contact
+POST https://contacts-api-h2tz.onrender.com/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Alice",
+  "lastName": "Smith",
+  "email": "alice.smith@example.com",
+  "favoriteColor": "yellow",
+  "birthday": "1985-03-15"
+}
+
+###
+
+### Update a contact
+PUT https://contacts-api-h2tz.onrender.com/contacts/67d4b748d7af6c4c0088bebf
+Content-Type: application/json
+
+{
+  "firstName": "Alice",
+  "lastName": "Johnson",
+  "email": "alice.johnson@example.com",
+  "favoriteColor": "orange",
+  "birthday": "1985-03-15"
+}
+
+###
+
+### Delete a contact
+DELETE https://contacts-api-h2tz.onrender.com/contacts/67d4b748d7af6c4c0088bebf
+Content-Type: application/json
